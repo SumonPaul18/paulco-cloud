@@ -1,0 +1,70 @@
+<nav class="navbar is-light">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/pc.png') }}" alt="Logo" class="navbar-logo">
+            </a>
+            <div class="navbar-burger" data-target="navbarMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="{{ url_for('products') }}">Products</a>
+                <a class="navbar-item" href="#">Solutions</a>
+                <a class="navbar-item" href="#">Pricing</a>
+                <a class="navbar-item" href="#">Blog</a>
+                {% if current_user.is_authenticated %}
+                <a class="navbar-item" href="{{ url_for('dashboard') }}">Dashboard</a>
+                {% endif %}
+            </div>
+            <div class="navbar-end">
+                {% if current_user.is_authenticated %}
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        {{ current_user.name }}
+                    </a>
+                    <div class="navbar-dropdown is-right">
+                        <a class="navbar-item"><strong>Email:</strong> {{ current_user.email }}</a>
+                        <a class="navbar-item">
+                            <figure class="image is-48x48">
+                                <img src="{{ current_user.profile_pic }}" alt="Profile Picture">
+                            </figure>
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="{{ url_for('settings') }}">Settings</a>
+                        <a class="navbar-item" href="{{ url_for('logout') }}">Logout</a>
+                    </div>
+                </div>
+                {% else %}
+                <a class="navbar-item" href="{{ url_for('login') }}">Sign In</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+            // Add a click event on each of them
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+                });
+            });
+        }
+    });
+</script>

@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block title %}Paulco Cloud{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero d-flex align-items-center bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- First Column -->
+            <div class="col-md-6">
+                <h1 class="display-4 fw-bold">
+                    Discover Our Cloud Solutions
+                </h1>
+                <p class="lead">
+                    Innovative, Reliable, and Tailored for Your Business Needs
+                </p>
+                <a href="#services" class="btn btn-light btn-lg">Get Started</a>
+            </div>
+            <!-- Second Column -->
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='images/oplab.png') }}" class="img-fluid" alt="Cloud Services">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Services</h2>
+        <div class="row">
+            <div class="col-md-4 text-center mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-cloud-upload display-4 text-primary mb-3"></i>
+                        <h5 class="card-title">Cloud Storage</h5>
+                        <p class="card-text">Secure and scalable cloud storage solutions for your business.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-shield-lock display-4 text-primary mb-3"></i>
+                        <h5 class="card-title">Security</h5>
+                        <p class="card-text">Advanced security features to protect your data and applications.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-speedometer2 display-4 text-primary mb-3"></i>
+                        <h5 class="card-title">Performance</h5>
+                        <p class="card-text">High-performance cloud computing resources for your workloads.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="section bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Meet the Team</h2>
+        <div class="row">
+            <!-- Owner Section -->
+            <div class="col-md-4 text-center mb-4">
+                <div class="card border-0 shadow-sm team-card">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/owner.png') }}" class="rounded-circle mb-3 img-fluid" alt="Owner" width="150" height="150">
+                        <h5 class="card-title">Sumon Paul</h5>
+                        <p class="card-text">Owner & Founder</p>
+                        <p>Sumon is the visionary behind our application, bringing years of experience in cloud services and technology. He is passionate about innovation and dedicated to providing the best solutions for our clients.</p>
+                        <a href="https://www.linkedin.com/in/johndoe" class="btn btn-outline-primary btn-sm" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Contributor 1 -->
+            <div class="col-md-4 text-center mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Contributor 1">
+                        <h5 class="card-title">Jane Smith</h5>
+                        <p class="card-text">Lead Developer</p>
+                        <p>Jane is our lead developer, responsible for the core functionality and architecture of the application.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Contributor 2 -->
+            <div class="col-md-4 text-center mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Contributor 2">
+                        <h5 class="card-title">Emily Johnson</h5>
+                        <p class="card-text">UI/UX Designer</p>
+                        <p>Emily designs the user interface and experience, ensuring the application is both beautiful and easy to use.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Contact Us</h2>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

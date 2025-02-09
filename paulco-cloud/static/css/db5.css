@@ -1,0 +1,59 @@
+
+body {
+    background-color: #f8f9fa; /* Light background for the body */
+}
+.wrapper {
+    display: flex;
+    height: 100vh;
+}
+#sidebar {
+    background-color: #343a40; /* Sidebar color */
+    color: white; /* Sidebar text color */
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar-link {
+    color: white; /* Sidebar link color */
+}
+.sidebar-link:hover {
+    background-color: #495057; /* Sidebar link hover color */
+}
+.navbar {
+    background-color: #343a40; /* Navbar color matching sidebar */
+    width: calc(100% - 250px);
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+.navbar .nav-link, .navbar .navbar-brand {
+    color: white; /* Navbar text color */
+}
+.navbar .nav-link:hover {
+    color: #adb5bd; /* Navbar link hover color */
+}
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.dropdown-menu {
+    min-width: 150px;
+}
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.content {
+    flex: 1;
+    padding: 20px;
+}
+.sidebar-nav .has-dropdown > .sidebar-link::after {
+    content: '\f107'; /* FontAwesome down arrow */
+    font-family: 'FontAwesome';
+    float: right;
+}
+.sidebar-nav .has-dropdown[aria-expanded="true"] > .sidebar-link::after {
+    content: '\f106'; /* FontAwesome up arrow */
+}
