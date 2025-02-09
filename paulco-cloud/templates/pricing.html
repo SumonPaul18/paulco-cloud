@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Pricing Plans{% endblock %}
+
+{% block content %}
+<section class="hero bg-light py-5">
+    <div class="container text-center">
+        <h1 class="display-4">Pricing Plans</h1>
+        <p class="lead">Choose the plan that fits your needs</p>
+        <p class="mb-4">We offer a variety of plans to suit your requirements. Select the one that best matches your needs and get started today!</p>
+        <div class="d-flex justify-content-center">
+            <a href="#" class="btn btn-primary btn-lg me-3">Get Started for Free</a>
+            <a href="#" class="btn btn-outline-primary btn-lg">Request a Pricing Offer</a>
+        </div>
+    </div>
+</section>
+
+<section class="section py-5">
+    <div class="container">
+        <!-- Pricing Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered text-center mt-5">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>Plan</th>
+                        <th>Features</th>
+                        <th>Price per Month</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-light">
+                    <!-- Basic Plan -->
+                    <tr>
+                        <td><strong>Basic Plan</strong></td>
+                        <td>5 GB Storage, 1 User, Email Support</td>
+                        <td>$10</td>
+                    </tr>
+
+                    <!-- Standard Plan -->
+                    <tr>
+                        <td><strong>Standard Plan</strong></td>
+                        <td>50 GB Storage, 5 Users, Priority Support</td>
+                        <td>$25</td>
+                    </tr>
+
+                    <!-- Premium Plan -->
+                    <tr>
+                        <td><strong>Premium Plan</strong></td>
+                        <td>200 GB Storage, Unlimited Users, 24/7 Support</td>
+                        <td>$50</td>
+                    </tr>
+
+                    <!-- Enterprise Plan -->
+                    <!-- Add more plans as needed -->
+                    <!-- Example of an Enterprise Plan -->
+                    <!-- You can customize this section further based on your offerings -->
+                    <!-- Uncomment below if you want to add Enterprise plan -->
+                    <!--
+                    <tr>
+                        <td><strong>Enterprise Plan</strong></td>
+                        <td>Unlimited Storage, Dedicated Support, Custom Solutions</td>
+                        <td>$100+</td> 
+                    </tr> 
+                    -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-success btn-lg">Get Started Now</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

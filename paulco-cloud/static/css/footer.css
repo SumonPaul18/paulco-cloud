@@ -1,0 +1,79 @@
+/* External CSS for footer.html */
+/** Add footer1.html code css  */
+
+footer {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    padding: 40px 0;
+}
+
+footer h5 {
+    color: #343a40;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+footer .nav-link {
+    color: #6c757d;
+    transition: color 0.3s;
+}
+
+footer .nav-link:hover {
+    color: #007bff;
+}
+
+footer .form-control {
+    border-radius: 0;
+}
+
+footer .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+footer .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+footer .border-top {
+    border-top: 1px solid #dee2e6 !important;
+}
+
+footer .list-unstyled {
+    margin-bottom: 0;
+}
+
+footer .list-unstyled .link-body-emphasis {
+    color: #6c757d;
+    transition: color 0.3s;
+}
+
+footer .list-unstyled .link-body-emphasis:hover {
+    color: #007bff;
+}
+
+footer .bi {
+    fill: currentColor;
+}
+
+footer .container {
+    max-width: 1200px;
+}
+
+/* Social Icons */
+footer .list-unstyled .fab {
+    font-size: 1.5rem;
+    color: #6c757d;
+    transition: color 0.3s;
+}
+
+footer .list-unstyled .fab:hover {
+    color: #007bff;
+}
+
+/* Custom Height */
+.custom-height {
+    height: 10px; /* Adjust the height as needed */
+}

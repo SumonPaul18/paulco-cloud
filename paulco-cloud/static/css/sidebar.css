@@ -1,0 +1,53 @@
+/* static/css/sidebar.css */
+.sidebar {
+    width: 60px;
+    transition: width 0.3s;
+    overflow: hidden;
+    background-color: #607df1;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    position: fixed;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.menu-item-label {
+    display: none;
+    margin-left: 10px;
+}
+
+.sidebar:hover .menu-item-label {
+    display: inline;
+}
+
+.menu-list > li > a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.menu-list > li > a:hover {
+    background-color: #8d82d6; /* Changed hover color */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu .submenu {
+    display: none;
+    padding-left: 1.5rem;
+}
+
+.menu .has-dropdown.is-active .submenu {
+    display: block;
+}
+
+.menu .has-dropdown .icon.is-right {
+    margin-left: auto;
+}
+
+.sidebar-icon {
+    width: 24px;
+    height: 24px;
+}

@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='images/pc.png') }}" alt="Logo" class="navbar-logo" style="height: 40px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('products') }}">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('solutions') }}">Solutions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('pricing') }}">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Blog</a>
+                </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav">
+                {% if current_user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ current_user.profile_pic }}" alt="Profile Picture" class="img-fluid rounded-circle" style="height: 30px; width: 30px;">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item"><strong>Email:</strong> {{ current_user.email }}</a></li>
+                        <li><a class="dropdown-item">
+                            <figure class="image is-48x48">
+                                <img src="{{ current_user.profile_pic }}" alt="Profile Picture" class="img-fluid rounded-circle">
+                            </figure>
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ url_for('settings') }}">Settings</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="btn btn-primary" href="{{ url_for('login') }}">Sign In</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    .navbar-light .navbar-nav .nav-link {
+        color: #555;
+        font-weight: 500;
+    }
+    .navbar-light .navbar-nav .nav-link:hover {
+        color: #007bff;
+    }
+    .navbar-light .navbar-brand {
+        font-weight: bold;
+        color: #007bff;
+    }
+    .navbar-light .navbar-brand:hover {
+        color: #0056b3;
+    }
+    .navbar-light .navbar-toggler {
+        border-color: #007bff;
+    }
+    .navbar-light .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 123, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    /* Custom navbar color */
+.navbar-custom {
+    background-color: #343a40;
+}
+
+.navbar-custom .navbar-nav .nav-link,
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-toggler-icon {
+    color: #fff;
+}
+
+.navbar-custom .navbar-nav .nav-link:hover,
+.navbar-custom .navbar-brand:hover {
+    color: #ffc107;
+}
+</style>

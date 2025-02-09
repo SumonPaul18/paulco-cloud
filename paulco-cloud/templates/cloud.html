@@ -1,0 +1,44 @@
+{% extends "sidebar1.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Cloud Dashboard</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="card-title mb-0">Cloud Storage</h5>
+                </div>
+                <div class="card-body">
+                    <p>Total Storage: 500 GB</p>
+                    <p>Used Storage: 200 GB</p>
+                    <div class="progress">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">Active Users</h5>
+                </div>
+                <div class="card-body">
+                    <p>Current Active Users: 150</p>
+                    <p>New Users This Month: 30</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="card-title mb-0">Server Status</h5>
+                </div>
+                <div class="card-body">
+                    <p>Server Uptime: 99.9%</p>
+                    <p>Last Downtime: 2 days ago</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

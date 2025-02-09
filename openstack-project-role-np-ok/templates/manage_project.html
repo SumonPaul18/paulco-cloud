@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Project</title>
+</head>
+<body>
+    <h1>Manage Project</h1>
+
+    <!-- ইনস্ট্যান্স তৈরি করার ফর্ম -->
+    <h2>Create New Instance</h2>
+    <form method="POST">
+        <input type="hidden" name="action" value="create_instance">
+        <label for="instance_name">Instance Name:</label>
+        <input type="text" id="instance_name" name="instance_name" required><br><br>
+
+        <label for="image_id">Image ID:</label>
+        <input type="text" id="image_id" name="image_id" required><br><br>
+
+        <label for="flavor_id">Flavor ID:</label>
+        <input type="text" id="flavor_id" name="flavor_id" required><br><br>
+
+        <label for="network_id">Network ID:</label>
+        <input type="text" id="network_id" name="network_id" required><br><br>
+
+        <button type="submit">Create Instance</button>
+    </form>
+
+    <!-- ইনস্ট্যান্স লিস্ট -->
+    <h2>Instance List</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for instance in instances %}
+        <tr>
+            <td>{{ instance.id }}</td>
+            <td>{{ instance.name }}</td>
+            <td>{{ instance.status }}</td>
+            <td>
+                <form method="POST" style="display:inline;">
+                    <input type="hidden" name="action" value="delete_instance">
+                    <input type="hidden" name="instance_id" value="{{ instance.id }}">
+                    <button type="submit">Delete</button>
+                </form>
+                <form method="POST" style="display:inline;">
+                    <input type="hidden" name="action" value="start_instance">
+                    <input type="hidden" name="instance_id" value="{{ instance.id }}">
+                    <button type="submit">Start</button>
+                </form>
+                <form method="POST" style="display:inline;">
+                    <input type="hidden" name="action" value="stop_instance">
+                    <input type="hidden" name="instance_id" value="{{ instance.id }}">
+                    <button type="submit">Stop</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- ফ্ল্যাশ মেসেজ -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
