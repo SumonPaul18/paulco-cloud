@@ -1,0 +1,54 @@
+{% extends "dashboard5.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Create OpenStack Project</h1>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">New Project</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('create_project') }}">
+                        <div class="mb-3">
+                            <label for="projectName" class="form-label">Project Name</label>
+                            <input type="text" class="form-control" id="projectName" name="project_name" placeholder="Enter project name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter project description" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="instanceType" class="form-label">Instance Type</label>
+                            <select class="form-select" id="instanceType" name="instance_type" required>
+                                <option selected disabled>Select instance type</option>
+                                <option value="small">Small</option>
+                                <option value="medium">Medium</option>
+                                <option value="large">Large</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <select class="form-select" id="image" name="image" required>
+                                <option selected disabled>Select image</option>
+                                <option value="ubuntu">Ubuntu 20.04</option>
+                                <option value="centos">CentOS 8</option>
+                                <option value="windows">Windows Server 2019</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="network" class="form-label">Network</label>
+                            <select class="form-select" id="network" name="network" required>
+                                <option selected disabled>Select network</option>
+                                <option value="public">Public</option>
+                                <option value="private">Private</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Project</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

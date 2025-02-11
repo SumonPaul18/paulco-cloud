@@ -1,7 +1,6 @@
 import sys
 from main import app, db
 from dashboard import app
-from openstack_component import app
 
 if __name__ == "__main__":
     if "--setup" in sys.argv:

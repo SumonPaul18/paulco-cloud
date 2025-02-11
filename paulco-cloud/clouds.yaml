@@ -1,0 +1,12 @@
+clouds:
+  paulco-demo:
+    auth:
+      auth_url: http://192.168.0.50:5000
+      username: "paulco-demo"
+      password: "Paulco-Demo#12345"
+      project_id: 883023b4f00b4f44a939b09bb2a9cc02
+      project_name: "paulco-demo"
+      user_domain_name: "Default"
+    region_name: "RegionOne"
+    interface: "public"
+    identity_api_version: 3

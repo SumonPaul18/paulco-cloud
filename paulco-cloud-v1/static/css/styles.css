@@ -1,0 +1,18 @@
+/* Card Styles */
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
+/* Table Styles */
+.table th, .table td {
+  text-align: center; /* Center align table content */
+}
+
+.table th {
+  background-color: #007bff; /* Header background color */
+  color: white; /* Header text color */
+}

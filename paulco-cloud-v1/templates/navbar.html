@@ -1,0 +1,53 @@
+<!-- templates/navbar.html -->
+<nav class="navbar is-light">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='images/pc.png') }}" alt="Logo" style="width: 150px;">
+        </a>
+        <div class="navbar-burger burger" data-target="navbarNav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div id="navbarNav" class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item">
+                <div class="field">
+                    <p class="control has-icons-left">
+                        <input class="input is-rounded" type="text" placeholder="Search...">
+                        <span class="icon is-left">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-end">
+            {% if current_user.is_authenticated %}
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        <figure class="image is-32x32 is-rounded">
+                            <img src="{{ current_user.profile_pic }}" alt="Profile Picture">
+                        </figure>
+                        <span>{{ current_user.name }}</span>
+                    </a>
+                    <div class="navbar-dropdown is-right">
+                        <a class="navbar-item">
+                            <strong>{{ current_user.name }}</strong>
+                        </a>
+                        <a class="navbar-item" href="{{ url_for('settings') }}">
+                            Settings
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="{{ url_for('logout') }}">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <a class="navbar-item" href="{{ url_for('login') }}">Sign In</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

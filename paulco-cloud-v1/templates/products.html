@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Explore Paulco Cloud Products</h1>
+    <h2 class="text-center my-4">Start with one of these featured services or browse the catalog below.</h2>
+    <div class="row g-4">
+        <!-- AWS Products -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-light h-100">
+                <img src="{{ url_for('static', filename='images/aws.png') }}" class="card-img-top" alt="AWS Products">
+                <div class="card-body">
+                    <h5 class="card-title">Amazon Web Services (AWS)</h5>
+                    <p class="card-text">Explore a comprehensive suite of cloud services including computing power, storage options, and networking capabilities.</p>
+                    <a href="#" class="btn btn-primary">View AWS Products</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- GCP Products -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-light h-100">
+                <img src="{{ url_for('static', filename='images/gcp.png') }}" class="card-img-top" alt="GCP Products">
+                <div class="card-body">
+                    <h5 class="card-title">Google Cloud Platform (GCP)</h5>
+                    <p class="card-text">Leverage Google’s powerful infrastructure to build, deploy, and scale applications in the cloud.</p>
+                    <a href="#" class="btn btn-primary">View GCP Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <h2 class="text-center my-4">Why Choose Our Cloud Solutions?</h2>
+    <div class="row text-center g-4">
+        <div class="col-md-4">
+            <div class="icon-box">
+                <i class="fas fa-lock fa-3x mb-3 text-primary"></i>
+                <h4>Security</h4>
+                <p>Robust security measures to protect your data and applications.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="icon-box">
+                <i class="fas fa-chart-line fa-3x mb-3 text-primary"></i>
+                <h4>Scalability</h4>
+                <p>Easily scale your resources up or down based on demand.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="icon-box">
+                <i class="fas fa-clock fa-3x mb-3 text-primary"></i>
+                <h4>Reliability</h4>
+                <p>High availability and redundancy to ensure your services are always online.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center my-5">
+        <h3>Ready to Get Started?</h3>
+        <a href="{{ url_for('contact') }}" class="btn btn-success btn-lg">Contact Us</a>
+    </div>
+</div>
+{% endblock %}
