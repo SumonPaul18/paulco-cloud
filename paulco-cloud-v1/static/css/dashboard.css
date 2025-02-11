@@ -1,0 +1,21 @@
+.card-header {
+    font-weight: bold;
+}
+
+.card-title {
+    font-size: 1.25rem;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}

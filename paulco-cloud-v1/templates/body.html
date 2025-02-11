@@ -1,0 +1,26 @@
+<!-- templates/body.html -->
+<!-- {% extends "base.html" %} -->
+
+{% block title %}Dashboard - Flask OAuth App{% endblock %}
+
+<!-- {% include 'navbar.html' %} -->
+
+{% block content %}
+
+
+
+        
+<div class="columns">
+    <div class="column is-one-fifth">
+        {% include 'sidebar.html' %}
+    </div>
+    <div class="column">
+        <section class="section">
+            <div class="container">
+                <h1 class="title">Dashboard</h1>
+                <p>Welcome to your dashboard!</p>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
