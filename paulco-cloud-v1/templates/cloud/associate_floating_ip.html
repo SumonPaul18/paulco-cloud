@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Associate Floating IP to Instance: {{ instance.name }}</h2>
+
+{% if floating_ips %}
+<form method="post">
+    <div class="form-group">
+        <label for="floating_ip_id">Select Floating IP to Associate:</label>
+        <select class="form-control" id="floating_ip_id" name="floating_ip_id" required>
+            {% for floating_ip in floating_ips %}
+            <option value="{{ floating_ip.id }}">{{ floating_ip.floating_ip_address }} (Pool: {{ floating_ip.floating_ip_pool_name }})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Associate Floating IP</button>
+    <a href="{{ url_for('get_instance', instance_id=instance.id) }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% else %}
+<p>No available Floating IPs to associate. <a href="{{ url_for('allocate_floating_ip') }}">Allocate a new Floating IP?</a></p>
+<a href="{{ url_for('get_instance', instance_id=instance.id) }}" class="btn btn-secondary">Back to Instance Details</a>
+{% endif %}
+
+{% endblock %}

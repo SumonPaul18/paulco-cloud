@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron text-center bg-light shadow-sm">
+    <h1 class="display-4">Welcome to OpenStack Management</h1>
+    <p class="lead">Manage your OpenStack instances easily with this web interface.</p>
+    <hr class="my-4">
+    <p>Use the navigation menu to list, create, or delete instances.</p>
+    <a class="btn btn-primary btn-lg" href="/create_instance" role="button">Create Instance</a>
+    <a class="btn btn-secondary btn-lg" href="/instances" role="button">List Instances</a>
+</div>
+{% endblock %}

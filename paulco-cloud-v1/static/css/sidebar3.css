@@ -192,3 +192,83 @@ a.sidebar-link:hover {
 } 
 */
 
+.sidebar-icon {
+    width: 30px; /* Adjust to your desired icon size */
+    height: 25px; /* Adjust to your desired icon size */
+    vertical-align: middle; /* Align icons with text */
+    margin-right: 5px; /* Space between icon and text */
+}
+
+/* instance_detail.html পেজের জন্য স্টাইল */
+.instance-detail {
+    display: flex;
+    justify-content: center; /* পেজের মাঝে কার্ডটিকে সেন্টার করার জন্য */
+}
+
+.instance-detail-card {
+    background-color: #f8f9fa; /* হালকা ব্যাকগ্রাউন্ড কালার */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* হালকা শ্যাডো */
+    width: 80%; /* কার্ডের প্রস্থ */
+    max-width: 700px; /* সর্বোচ্চ প্রস্থ */
+}
+
+.instance-detail-card .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40; /* গাঢ় টেক্সট কালার */
+    margin-bottom: 20px;
+    text-align: center; /* টাইটেল সেন্টার */
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: baseline; /* লেবেল ও ভ্যালু বেসলাইনে এলাইন */
+}
+
+.detail-label {
+    font-weight: bold;
+    width: 120px; /* লেবেলের জন্য ফিক্সড প্রস্থ */
+    color: #495057; /* লেবেল টেক্সট কালার */
+    margin-right: 10px;
+    text-align: right; /* লেবেল ডানদিকে এলাইন */
+}
+
+.detail-value {
+    color: #212529; /* ভ্যালু টেক্সট কালার */
+    flex-grow: 1; /* ভ্যালু জায়গা নিতে পারবে */
+}
+
+.detail-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #dee2e6; /* সেকশনগুলোর মধ্যে ডিভাইডার লাইন */
+}
+
+.detail-section h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+.detail-section ul {
+    list-style-type: square; /* লিস্ট স্টাইল */
+    padding-left: 25px;
+}
+
+.detail-section li {
+    margin-bottom: 8px;
+    color: #212529;
+}
+
+.button-group {
+    margin-top: 25px;
+    text-align: center; /* বাটন গ্রুপ সেন্টার */
+}
+
+.button-group .btn {
+    margin: 0 10px; /* বাটনগুলোর মধ্যে মার্জিন */
+}

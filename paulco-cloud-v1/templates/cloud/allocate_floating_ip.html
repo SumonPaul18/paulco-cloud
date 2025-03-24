@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Allocate Floating IP</h2>
+<form method="post">
+    <p>Are you sure you want to allocate a new Floating IP from the Public pool?</p>
+    <button type="submit" class="btn btn-primary">Allocate Floating IP</button>
+    <a href="{{ url_for('floating_ips') }}" class="btn btn-secondary">Cancel</a>
+</form>
+<p><small>Currently, Floating IPs are allocated from the 'Public' pool.</small></p>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Attach Volume to Instance: {{ instance.name }}</h2>
+
+{% if volumes %}
+<form method="post">
+    <div class="form-group">
+        <label for="volume_id">Select Volume to Attach:</label>
+        <select class="form-control" id="volume_id" name="volume_id" required>
+            {% for volume in volumes %}
+            <option value="{{ volume.id }}">{{ volume.name }} (Size: {{ volume.size }}GB)</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Attach Volume</button>
+    <a href="{{ url_for('get_instance', instance_id=instance.id) }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% else %}
+<p>No available volumes to attach. <a href="{{ url_for('create_volume') }}">Create a new volume?</a></p>
+<a href="{{ url_for('get_instance', instance_id=instance.id) }}" class="btn btn-secondary">Back to Instance Details</a>
+{% endif %}
+
+{% endblock %}

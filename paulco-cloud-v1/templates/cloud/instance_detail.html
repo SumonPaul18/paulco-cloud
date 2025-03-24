@@ -1,0 +1,57 @@
+{% extends 'sidebar.html' %}
+
+{% block content %}
+<h2>Instance Details</h2>
+<div class="instance-details">
+    <p><strong>Name:</strong> {{ instance.name }}</p>
+    <p><strong>Status:</strong> {{ instance.status }}</p>
+    <p><strong>ID:</strong> {{ instance.id }}</p>
+    <p><strong>Flavor:</strong> {{ instance.flavor }}</p>
+    <p><strong>Image:</strong> {{ instance.image }}</p>
+    <p><strong>Created At:</strong> {{ instance.created_at }}</p>
+    <p><strong>Updated At:</strong> {{ instance.updated_at }}</p>
+    <p><strong>IPs:</strong> {{ instance.ips }}</p>
+    <p><strong>Security Groups:</strong> {{ instance.security_groups }}</p>
+
+    <h3>Volumes</h3>
+    {% if instance.volumes %}
+    <ul>
+        {% for volume in instance.volumes %}
+        <li>{{ volume.name }} (Size: {{ volume.size }}GB, ID: {{ volume.id }})
+            <form action="{{ url_for('detach_volume_from_instance', instance_id=instance.id, volume_id=volume.id) }}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-warning">Detach Volume</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No volumes attached.</p>
+    {% endif %}
+
+    <h3>Billing Information</h3>
+    <p><strong>Runtime:</strong> {{ instance.runtime_hours }} hours</p>
+    <p><strong>Flavor Cost:</strong> {{ instance.flavor_cost }} {{ pricing.currency }}</p>
+    <p><strong>Volume Cost:</strong> {{ instance.volume_cost }} {{ pricing.currency }}</p>
+    <p><strong>Total Cost:</strong> {{ instance.total_cost }} {{ pricing.currency }}</p>
+
+
+    <div class="actions">
+        <form action="{{ url_for('start_instance', instance_id=instance.id) }}" method="post" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-success">Start</button>
+        </form>
+        <form action="{{ url_for('stop_instance', instance_id=instance.id) }}" method="post" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-warning">Stop</button>
+        </form>
+        <form action="{{ url_for('restart_instance', instance_id=instance.id) }}" method="post" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-info">Restart</button>
+        </form>
+        <form action="{{ url_for('delete_instance', instance_id=instance.id) }}" method="post" style="display:inline;">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+        </form>
+        <a href="{{ url_for('get_instance_console', instance_id=instance.id) }}" class="btn btn-sm btn-secondary">Console</a>
+        <a href="{{ url_for('attach_volume_to_instance', instance_id=instance.id) }}" class="btn btn-sm btn-outline-secondary">Attach Volume</a>
+        <a href="{{ url_for('associate_floating_ip_to_instance', instance_id=instance.id) }}" class="btn btn-sm btn-outline-primary">Associate IP</a>
+    </div>
+</div>
+{% endblock %}

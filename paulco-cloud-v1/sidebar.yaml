@@ -1,0 +1,69 @@
+- name: Computing
+  icon_url: icons/computing.png
+  url: profile
+
+  sub_items:
+    - name: Instance
+      icon_url: icons/instance.png
+      url: list_instances
+    - name: Create Instance
+      icon_class: null
+      url: create_instance
+
+- name: Kubernetes
+  icon_url: icons/k8s.png
+  url: task
+  sub_items:
+    - name: Deployments
+      icon_url: icons/k8s.png
+      url: "task"
+    - name: Services
+      icon_class: bi bi-gear-fill
+      url: "task"
+    - name: Namespaces
+      icon_class: bi bi-list-ul
+      url: task
+
+- name: Docker
+  icon_url: icons/docker.png
+  url: "task"
+  sub_items:
+    - name: Login
+      icon_class: null
+      url: task
+    - name: Register
+      icon_class: null
+      url: task
+
+- name: Networking
+  icon_class: lni lni-layout
+  url: "task"
+  sub_items:
+    - name: Domain
+      sub_items:
+        - name: DNS
+          url: task
+        - name: IPs
+          url: task
+
+- name: Monitorning
+  icon_class: lni lni-popup
+  url: task
+  sub_items:
+    - name: Logs
+      icon_class: lni lni-cog
+      url: task
+    - name: Metrics
+      icon_class: lni lni-cog
+      url: task
+
+- name: Bills
+  icon_class: lni lni-cog
+  url: settings
+
+- name: Supports
+  icon_class: lni lni-cog
+  url: settings
+
+- name: Setting
+  url: settings

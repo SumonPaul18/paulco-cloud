@@ -4,12 +4,18 @@ from flask_login import (
     login_required, login_user, logout_user
 )
 from main import app, db
-#from models import User
+
+import yaml
+
+def load_sidebar_config():
+    with open('sidebar.yaml', 'r') as f:
+        return yaml.safe_load(f)
 
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('sidebar.html')
+    sidebar_items = load_sidebar_config()
+    return render_template('sidebar.html', sidebar_items=sidebar_items)
 
 @app.route('/profile')
 @login_required
@@ -45,10 +51,10 @@ def settings():
 def cloud():
     return render_template('cloud.html')
 
-@app.route('/create_project')
-@login_required
-def create_project():
-    return render_template('create_project2.html')
+#@app.route('/create_project')
+#@login_required
+#def create_project():
+#    return render_template('create_project2.html')
 
 @app.route('/products')
 def products():
