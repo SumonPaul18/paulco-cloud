@@ -1,10 +1,8 @@
-FROM python:3.9-slim
+FROM python:3.9-slim-buster
 WORKDIR /app
-COPY requirements.txt requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 COPY . .
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_APP app.py
 EXPOSE 5000
-#CMD ["sh", "-c", "flask db init && flask db migrate -m 'Initial migration' && flask db upgrade && flask run --host=0.0.0.0"]
-CMD ["python", "app.py"]
+CMD ["flask", "run", "--host=0.0.0.0"]
