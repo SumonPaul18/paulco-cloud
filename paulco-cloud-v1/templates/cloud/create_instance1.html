@@ -1,0 +1,46 @@
+{% extends "sidebar.html" %}
+
+{% block content %}
+<h2>Create OpenStack Instance</h2>
+<form action="/create_instance" method="post">
+    <div class="form-group">
+        <label for="name">Instance Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required placeholder="Enter instance name">
+    </div>
+    <div class="form-group">
+        <label for="image">Image:</label>
+        <select class="form-control" id="image" name="image" required>
+            {% for image in images %}
+                <option value="{{ image.id }}">{{ image.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="flavor">Flavor:</label>
+        <select class="form-control" id="flavor" name="flavor" required>
+            {% for flavor in flavors %}
+                <option value="{{ flavor.id }}">{{ flavor.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="network">Network:</label>
+        <select class="form-control" id="network" name="network" required>
+            {% for network in networks %}
+                <option value="{{ network.id }}">{{ network.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="keypair">Create New Key Pair (Optional):</label>
+        <input type="text" class="form-control" id="keypair_name" name="keypair_name" placeholder="Enter key pair name">
+    </div>
+    <button type='submit' class='btn btn-primary'>Create Instance</button>
+</form>
+
+<script >
+document.querySelector('form').addEventListener('submit', function() {
+   document.getElementById('submitBtn').disabled = true;
+});
+</script >
+{% endblock %}

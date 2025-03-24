@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar With Bootstrap</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar3.css') }}">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background for the body */
+        }
+        #sidebar {
+            background-color: #343a40; /* Sidebar color */
+            color: white; /* Sidebar text color */
+        }
+        .sidebar-link {
+            color: white; /* Sidebar link color */
+        }
+        .sidebar-link:hover {
+            background-color: #495057; /* Sidebar link hover color */
+        }
+        .navbar {
+            background-color: #343a40; /* Navbar color matching sidebar */
+        }
+        .navbar .nav-link, .navbar .navbar-brand {
+            color: white; /* Navbar text color */
+        }
+        .navbar .nav-link:hover {
+            color: #adb5bd; /* Navbar link hover color */
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .dropdown-menu {
+            min-width: 150px;
+        }
+        .sidebar-icon {
+            width: 20px; /* Adjust to your desired icon size */
+            height: 20px; /* Adjust to your desired icon size */
+            vertical-align: middle; /* Align icons with text */
+            margin-right: 5px; /* Space between icon and text */
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button">
+                    <img src="{{ url_for('static', filename='images/clouds.png') }}" alt="Logo" class="img-fluid" style="max-width: 40px; height: auto;">
+                </button>
+                <div class="sidebar-logo">
+                    <a href="{{ url_for('index') }}">Paulco Cloud</a>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-item"><a href="{{ url_for('profile') }}" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#computing" aria-expanded="false" aria-controls="computing">
+                    <img src="{{ url_for('static', filename='icons/' + icons['Computing']['icon']) }}" alt="Computing Icon" class="sidebar-icon"><span>Computing</span></a>
+                    <ul id="computing" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item"><a href="{{ url_for('list_instances') }}" class="sidebar-link">
+                             <img src="{{ url_for('static', filename='icons/' + icons['Instance']['icon']) }}" alt="Instance Icon" class="sidebar-icon">Instance</a></li>
+                        <li class="sidebar-item"><a href="{{ url_for('create_instance') }}" class="sidebar-link">
+                             <img src="{{ url_for('static', filename='icons/' + icons['Create Instance']['icon']) }}" alt="Create Instance Icon" class="sidebar-icon">Create Instance</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a href="{{ url_for('task') }}" class="sidebar-link">
+                    <img src="{{ url_for('static', filename='icons/' + icons['Kubernetes']['icon']) }}" alt="Kubernetes Icon" class="sidebar-icon"><span>Kubernetes</span></a></li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#docker" aria-expanded="false" aria-controls="docker">
+                    <img src="{{ url_for('static', filename='icons/' + icons['Docker']['icon']) }}" alt="Docker Icon" class="sidebar-icon"><span>Docker</span></a>
+                    <ul id="docker" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item"><a href="#" class="sidebar-link"> <img src="{{ url_for('static', filename='icons/' + icons['Login']['icon']) }}" alt="Login Icon" class="sidebar-icon">Login</a></li>
+                        <li class="sidebar-item"><a href="#" class="sidebar-link"> <img src="{{ url_for('static', filename='icons/' + icons['Register']['icon']) }}" alt="Register Icon" class="sidebar-icon">Register</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#networking" aria-expanded="false" aria-controls="networking">
+                    <img src="{{ url_for('static', filename='icons/' + icons['Networking']['icon']) }}" alt="Networking Icon" class="sidebar-icon"><span>Networking</span></a>
+                    <ul id="networking" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item"><a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#domain" aria-expanded="false" aria-controls="domain">
+                             <img src="{{ url_for('static', filename='icons/' + icons['Domain']['icon']) }}" alt="Domain Icon" class="sidebar-icon">Domain
+                            <ul id="domain" class="sidebar-dropdown list-unstyled collapse">
+                                <li class="sidebar-item"><a href="#" class="sidebar-link"> <img src="{{ url_for('static', filename='icons/' + icons['DNS']['icon']) }}" alt="DNS Icon" class="sidebar-icon">DNS</a></li>
+                                <li class="sidebar-item"><a href="#" class="sidebar-link"> <img src="{{ url_for('static', filename='icons/' + icons['IPs']['icon']) }}" alt="IPs Icon" class="sidebar-icon">IPs</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link">
+                    <img src="{{ url_for('static', filename='icons/' + icons['Monitoring']['icon']) }}" alt="Monitoring Icon" class="sidebar-icon"><span>Monitoring</span></a></li>
+                <li class="sidebar-item"><a href="{{ url_for('settings') }}" class="sidebar-link">
+                    <img src="{{ url_for('static', filename='icons/' + icons['Bills']['icon']) }}" alt="Bills Icon" class="sidebar-icon"><span>Bills</span></a></li>
+                <li class="sidebar-item"><a href="{{ url_for('settings') }}" class="sidebar-link">
+                    <img src="{{ url_for('static', filename='icons/' + icons['Supports']['icon']) }}" alt="Supports Icon" class="sidebar-icon"><span>Supports</span></a></li>
+                <li class="sidebar-item"><a href="{{ url_for('settings') }}" class="sidebar-link">
+                    <img src="{{ url_for('static', filename='icons/' + icons['Setting']['icon']) }}" alt="Setting Icon" class="sidebar-icon"><span>Settings</span></a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="{{ url_for('logout') }}" class="sidebar-link">
+                    <img src="{{ url_for('static', filename='icons/' + icons['Logout']['icon']) }}" alt="Logout Icon" class="sidebar-icon"><span>Logout</span></a>
+            </div>
+        </aside>
+
+        <div class="main">
+            <nav class="navbar navbar-expand px-4 py-3">
+                                <form action="#" method="get" class="d-none d-sm-inline-block me-3">
+                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
+                </form>
+
+                                {% if current_user.is_authenticated %}
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a href="#" data-bs-toggle="dropdown" aria-expanded="false" class='nav-icon pe-md-0'>
+                                <img src="{{ current_user.profile_pic }}" class='avatar img-fluid' alt=''>
+                            </a>
+                            <div class='dropdown-menu dropdown-menu-end rounded'>
+                                <a class='dropdown-item' href="{{ url_for('profile') }}">Profile</a>
+                                <a class='dropdown-item' href="{{ url_for('settings') }}">Settings</a>
+                                <a class='dropdown-item' href="{{ url_for('logout') }}">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+                        <main class='content px-3 py-4'>
+                {% block content %}{% endblock %}
+            </main>
+
+                    </div>
+
+    </div>
+
+        <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL' crossorigin='anonymous'></script>
+
+        <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL' crossorigin='anonymous' defer></script>
+
+</body>
+</html>

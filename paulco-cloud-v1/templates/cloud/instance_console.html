@@ -1,0 +1,18 @@
+{% extends 'sidebar.html' %}
+
+{% block content %}
+  <h1>ইনস্ট্যান্স কনসোল</h1>
+  <h2>{{ instance_name }}</h2>
+
+  {% if console_url %}
+  <p>কনসোল URL: <a href="{{ console_url }}" target="_blank">{{ console_url }}</a></p>
+
+  <iframe src="{{ console_url }}" frameborder="0" width="100%" height="600px"></iframe>
+  <p>যদি উপরে আইফ্রেম কাজ না করে, তাহলে সরাসরি লিঙ্কে যান: <a href="{{ console_url }}" target="_blank">{{ console_url }}</a></p>
+
+  {% else %}
+  <p>কনসোল URL পেতে সমস্যা হয়েছে। </p>
+  {% endif %}
+
+  <a href="/instances/{{ instance_id }}" class="btn btn-primary">ইনস্ট্যান্স বিস্তারিত পেজ এ ফিরে যান</a>
+{% endblock %}

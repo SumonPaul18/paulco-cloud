@@ -1,0 +1,62 @@
+{% extends "sidebar.html" %}
+
+{% block content %}
+<h2>Instance List</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Status</th>
+                <th>IP Address</th>
+                <th>Flavor</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for instance in instances %}
+                <tr class="{% if instance.status == 'ACTIVE' %}table-success{% elif instance.status == 'ERROR' %}table-danger{% endif %}">
+                    <td><a href="/instances/{{ instance.id }}">{{ instance.name }}</a></td>
+                    <td>{{ instance.id }}</td>
+                    <td>{{ instance.status }}</td>
+                    <td>{{ instance.ips }}</td>
+                    <td>{{ instance.flavor }}</td>
+                    <td>{{ instance.image }}</td>
+                    <td>
+                        <a href="/instances/{{ instance.id }}" class="btn btn-info btn-sm" role="button">View Details</a>
+
+                        {% if instance.key_name %}
+                            <a href="/download_key/{{ instance.key_name }}" class="btn btn-secondary btn-sm" role="button">Download Key</a>
+                        {% endif %}
+
+                        <form action="/instances/{{ instance.id }}/start" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-success btn-sm" {% if instance.status == 'ACTIVE' %}disabled{% endif %}>Start</button>
+                        </form>
+
+                        <form action="/instances/{{ instance.id }}/stop" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-warning btn-sm" {% if instance.status == 'SHUTOFF' %}disabled{% endif %}>Stop</button>
+                        </form>
+
+                        <form action="/instances/{{ instance.id }}/restart" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-primary btn-sm">Restart</button>
+                        </form>
+
+                        <form action="/instances/{{ instance.id }}" method="post" style="display:inline;">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this instance?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7" class="text-center">No instances found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

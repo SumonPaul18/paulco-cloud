@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create Volume</h2>
+<form method="post">
+    <div class="form-group">
+        <label for="name">Volume Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="size">Size (GB)</label>
+        <input type="number" class="form-control" id="size" name="size" required min="1">
+    </div>
+    <button type="submit" class="btn btn-primary">Create Volume</button>
+    <a href="{{ url_for('list_volumes') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

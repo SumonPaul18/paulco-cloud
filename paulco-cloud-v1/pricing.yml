@@ -1,0 +1,14 @@
+instance_flavor_prices:
+  m1.tiny: 0.01 # Price per hour for m1.tiny flavor
+  m1.small: 0.02 # Price per hour for m1.small flavor
+  m1.medium: 0.04 # Price per hour for m1.medium flavor
+  m1.large: 0.08 # Price per hour for m1.large flavor
+  # Add prices for all flavors you are using
+
+volume_prices:
+  per_gb_per_hour: 0.0001 # Price per GB per hour for volumes
+
+floating_ip_prices:
+  per_ip_per_hour: 0.001 # Price per Floating IP per hour
+
+currency: USD # Currency for pricing

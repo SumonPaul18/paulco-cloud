@@ -54,43 +54,41 @@
                 </div>
             </div>
             <ul class="sidebar-nav">
-                {% for item in sidebar_items %}
-                <li class="sidebar-item">
-                    {% if item.sub_items %}
-                    <a href="{% if item.url %}{{ url_for(item.url) }}{% else %}#{% endif %}" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#{{ item.name|replace(' ', '_') }}" aria-expanded="false" aria-controls="{{ item.name|replace(' ', '_') }}">
-                        {% if item.icon_class %}
-                        <i class="{{ item.icon_class }}"></i>
-                        {% elif item.icon_url %}
-                        <img src="{{ url_for('static', filename=item.icon_url) }}" alt="{{ item.name }} Icon" class="sidebar-icon">
-                        {% endif %}
-                        <span>{{ item.name }}</span>
-                    </a>
-                    <ul id="{{ item.name|replace(' ', '_') }}" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        {% for sub_item in item.sub_items %}
-                        <li class="sidebar-item">
-                            <a href="{% if sub_item.url %}{{ url_for(sub_item.url) }}{% else %}{% endif %}" class="sidebar-link">
-                                {% if sub_item.icon_class %}
-                                <i class="{{ sub_item.icon_class }}"></i>
-                                {% elif sub_item.icon_url %}
-                                <img src="{{ url_for('static', filename=sub_item.icon_url) }}" alt="{{ sub_item.name }} Icon" class="sidebar-icon">
-                                {% endif %}
-                                {{ sub_item.name }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                    {% else %}
-                    <a href="{% if item.url %}{{ url_for(item.url) }}{% else %}#{% endif %}" class="sidebar-link">
-                        {% if item.icon_class %}
-                        <i class="{{ item.icon_class }}"></i>
-                        {% elif item.icon_url %}
-                        <img src="{{ url_for('static', filename=item.icon_url) }}" alt="{{ item.name }} Icon" class="sidebar-icon">
-                        {% endif %}
-                        <span>{{ item.name }}</span>
-                    </a>
-                    {% endif %}
+                <li class="sidebar-item"><a href="{{ url_for('profile') }}" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth"><i class="bi bi-cpu"></i><span>Computing</span></a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item"><a href="{{ url_for('list_instances') }}" class="sidebar-link"><i class="bi bi-pc"></i>Instance</a></li>
+                        <li class="sidebar-item"><a href="{{ url_for('create_instance') }}" class="sidebar-link">Create Instance</a></li>
+                    </ul>               
                 </li>
-                {% endfor %}
+                <li class="sidebar-item">
+                    <a href="{{ url_for('task') }}" class="sidebar-link">
+                        <img src="{{ url_for('static', filename='icons/k8s.png') }}" alt="Kubernetes" class="img-fluid" style="max-width: 20px; height: auto;">
+                        <span>Kubernetes</span>
+                    </a>
+                </li></a>
+                <li class="sidebar-item"><a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                    <img src="{{ url_for('static', filename='icons/docker.png') }}" alt="Docker" class="img-fluid" style="max-width: 20px; height: auto;">
+                    <span>Docker</span>
+                </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item"><a href="#" class="sidebar-link">Login</a></li>
+                        <li class="sidebar-item"><a href="#" class="sidebar-link">Register</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#multi" aria-expanded="false" aria-controls="multi"><img src="{{ url_for('static', filename='icons/network.png') }}" alt="Networking" class="sidebar-icon"><span>Networking</span></a>
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item"><a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">Domain</a>
+                            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
+                                <li class="sidebar-item"><a href="#" class="sidebar-link">DNS</a></li>
+                                <li class="sidebar-item"><a href="#" class="sidebar-link">IPs</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="lni lni-popup"></i><span>Monitorning</span></a></li>
+                <li class="sidebar-item"><a href="{{ url_for('settings') }}" class="sidebar-link"><i class="lni lni-cog"></i><span>Bills</span></a></li>
+                <li class="sidebar-item"><a href="{{ url_for('settings') }}" class="sidebar-link"><i class="lni lni-cog"></i><span>Supports</span></a></li>
+                <li class="sidebar-item"><a href="{{ url_for('settings') }}" class="sidebar-link"><i class="lni lni-cog"></i><span>Setting</span></a></li>
             </ul>
             <div class="sidebar-footer">
                 <a href="{{ url_for('logout') }}" class="sidebar-link"><i class="lni lni-exit"></i><span>Logout</span></a>
@@ -99,10 +97,12 @@
 
         <div class="main">
             <nav class="navbar navbar-expand px-4 py-3">
+                <!-- Search Box -->
                 <form action="#" class="d-none d-sm-inline-block me-3">
                     <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
                 </form>
 
+                <!-- Navbar Items -->
                 {% if current_user.is_authenticated %}
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav ms-auto">
@@ -122,17 +122,24 @@
                 {% endif %}
             </nav>
 
+            <!-- Main Content -->
             <main class='content px-3 py-4'>
                 {% block content %}{% endblock %}
             </main>
 
-            </div>
+            <!-- Footer 
+            <footerclass='footer'><divclass='container-fluid'><divclass='row text-body-secondary'><divclass='col-6 text-start '><aclass='text-body-secondary'href='#'><strong>CodzSwod</strong></aclass></div><divclass='col-6 text-end text-body-secondary d-none d-md-block'><ulclass='list-inline mb-0'><laclass='list-inline-item'><aclass='text-body-secondary'href='#'>Contact</aclass></laclass></ul></div></div></footer>
+            -->
+        </div>
 
     </div>
 
+    <!-- Bootstrap JS -->
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL' crossorigin='anonymous'></script>
 
+    <!-- Custom JS (If any) -->
     <script src="{{ url_for('static', filename='js/sidebar3.js') }}"></script>
-
+    
 </body>
 </html>
+

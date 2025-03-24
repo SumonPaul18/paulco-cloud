@@ -1,0 +1,122 @@
+{% extends "sidebar.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Instance List</h1>
+        <a href="{{ url_for('create_instance') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="bi bi-plus-circle-fill bi-sm text-white-50"></i> Create New Instance
+        </a>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Current Instances</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover" id="instanceTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>ID</th>
+                            <th>Flavor</th>
+                            <th>Image</th>
+                            <th>IPs</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>ID</th>
+                            <th>Flavor</th>
+                            <th>Image</th>
+                            <th>IPs</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for instance in instances %}
+                        <tr>
+                            <td><a href="{{ url_for('get_instance', instance_id=instance.id) }}">{{ instance.name }}</a></td>
+                            <td>{{ instance.status }}</td>
+                            <td>{{ instance.id }}</td>
+                            <td>{{ instance.flavor }}</td>
+                            <td>{{ instance.image }}</td>
+                            <td>{{ instance.ips }}</td>
+                            <td class="text-center">
+                                <div class="instance-actions btn-group" role="group" aria-label="Instance Actions">
+                                    <form action="{{ url_for('start_instance', instance_id=instance.id) }}" method="post">
+                                        <button type="submit" class="btn btn-sm btn-success" title="Start Instance"><i class="bi bi-play-fill"></i></button>
+                                    </form>
+                                    <form action="{{ url_for('stop_instance', instance_id=instance.id) }}" method="post">
+                                        <button type="submit" class="btn btn-sm btn-warning" title="Stop Instance"><i class="bi bi-stop-fill"></i></button>
+                                    </form>
+                                    <form action="{{ url_for('restart_instance', instance_id=instance.id) }}" method="post">
+                                        <button type="submit" class="btn btn-sm btn-info" title="Restart Instance"><i class="bi bi-arrow-clockwise"></i></button>
+                                    </form>
+                                    <form action="{{ url_for('delete_instance', instance_id=instance.id) }}" method="post">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-sm btn-danger" title="Delete Instance"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                    <a href="{{ url_for('get_instance_console', instance_id=instance.id) }}" class="btn btn-sm btn-secondary" title="Console"><i class="bi bi-terminal-fill"></i></a>
+                                    <a href="{{ url_for('attach_volume_to_instance', instance_id=instance.id) }}" class="btn btn-sm btn-outline-secondary" title="Attach Volume"><i class="bi bi-usb-drive-fill"></i></a>
+                                    <a href="{{ url_for('associate_floating_ip_to_instance', instance_id=instance.id) }}" class="btn btn-sm btn-outline-primary" title="Associate Floating IP"><i class="bi bi-ethernet"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-start gap-2 mb-4">
+        <a href="{{ url_for('list_volumes') }}" class="btn btn-info"><i class="bi bi-disc-fill"></i> View Volumes</a>
+        <a href="{{ url_for('list_floating_ips') }}" class="btn btn-info"><i class="bi bi-globe"></i> View Floating IPs</a>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#instanceTable').DataTable({
+            responsive: true,
+            // Optional: Customize DataTables further here
+        });
+    });
+</script>
+
+<style>
+    .btn-group form {
+        display: inline; /* Keep forms inline within the button group */
+    }
+    .btn-group button, .btn-group a {
+        margin-right: 2px; /* Add spacing between action buttons */
+        margin-bottom: 2px; /* Add spacing below buttons for wrapping */
+    }
+    .table.dataTable tbody td {
+        vertical-align: middle; /* Center content vertically in table cells */
+    }
+    .card-header {
+        background-color: #f8f9fa; /* Light background for card header, consistent with body */
+        border-bottom: 1px solid #e0e0e0; /* Light border for card header */
+    }
+    .card-body {
+        padding: 1.25rem;
+    }
+    .table-responsive {
+        overflow-x: auto; /* Ensure horizontal scroll if table is too wide */
+    }
+
+</style>
+
+{% endblock %}
