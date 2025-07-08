@@ -9,7 +9,6 @@ cd paulco-cloud
 docker compose up -d
 docker compose ps
 ```
-```
 
 
 
