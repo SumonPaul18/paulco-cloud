@@ -56,39 +56,26 @@
             <ul class="sidebar-nav">
                 {% for item in sidebar_items %}
                 <li class="sidebar-item">
+                    <a href="#" class="sidebar-link d-flex align-items-center sidebar-parent" data-bs-toggle="collapse" data-bs-target="#submenu-{{ loop.index }}">
+                        <img src="{{ url_for('static', filename=item.icon_url) }}" class="sidebar-icon" style="width:{{ item.icon_size }};height:{{ item.icon_size }};">
+                        <span class="sidebar-text ms-2">{{ item.name }}</span>
+                        {% if item.sub_items %}
+                          <span class="sidebar-arrow ms-auto">&#9662;</span>
+                        {% endif %}
+                    </a>
                     {% if item.sub_items %}
-                    <a href="{% if item.url %}{{ url_for(item.url) }}{% else %}#{% endif %}" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#{{ item.name|replace(' ', '_') }}" aria-expanded="false" aria-controls="{{ item.name|replace(' ', '_') }}">
-                        {% if item.icon_class %}
-                        <i class="{{ item.icon_class }}"></i>
-                        {% elif item.icon_url %}
-                        <img src="{{ url_for('static', filename=item.icon_url) }}" alt="{{ item.name }} Icon" class="sidebar-icon">
-                        {% endif %}
-                        <span>{{ item.name }}</span>
-                    </a>
-                    <ul id="{{ item.name|replace(' ', '_') }}" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        {% for sub_item in item.sub_items %}
-                        <li class="sidebar-item">
-                            <a href="{% if sub_item.url %}{{ url_for(sub_item.url) }}{% else %}{% endif %}" class="sidebar-link">
-                                {% if sub_item.icon_class %}
-                                <i class="{{ sub_item.icon_class }}"></i>
-                                {% elif sub_item.icon_url %}
-                                <img src="{{ url_for('static', filename=sub_item.icon_url) }}" alt="{{ sub_item.name }} Icon" class="sidebar-icon">
-                                {% endif %}
-                                {{ sub_item.name }}
+                      <ul class="sidebar-subnav collapse" id="submenu-{{ loop.index }}">
+                        {% for sub in item.sub_items %}
+                          <li class="sidebar-subitem">
+                            <a href="{{ url_for(sub.url) if sub.url else '#' }}" class="sidebar-link d-flex align-items-center">
+                              <img src="{{ url_for('static', filename=sub.icon_url) }}" class="sidebar-icon" style="width:{{ sub.icon_size }};height:{{ sub.icon_size }};">
+                              <span class="sidebar-text ms-2">{{ sub.name }}</span>
                             </a>
-                        </li>
+                          </li>
                         {% endfor %}
-                    </ul>
-                    {% else %}
-                    <a href="{% if item.url %}{{ url_for(item.url) }}{% else %}#{% endif %}" class="sidebar-link">
-                        {% if item.icon_class %}
-                        <i class="{{ item.icon_class }}"></i>
-                        {% elif item.icon_url %}
-                        <img src="{{ url_for('static', filename=item.icon_url) }}" alt="{{ item.name }} Icon" class="sidebar-icon">
-                        {% endif %}
-                        <span>{{ item.name }}</span>
-                    </a>
+                      </ul>
                     {% endif %}
+                    <hr class="sidebar-divider">
                 </li>
                 {% endfor %}
             </ul>
@@ -118,7 +105,6 @@
                         </li>
                     </ul>
                 </div>
-                {% else %}
                 {% endif %}
             </nav>
 

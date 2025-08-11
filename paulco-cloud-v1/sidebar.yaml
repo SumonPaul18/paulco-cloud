@@ -1,69 +1,92 @@
 - name: Computing
   icon_url: icons/computing.png
+  icon_size: 24px
   url: profile
-
   sub_items:
     - name: Instance
       icon_url: icons/instance.png
+      icon_size: 20px
       url: list_instances
     - name: Create Instance
-      icon_class: null
+      icon_url: icons/instance.png
+      icon_size: 20px
       url: create_instance
 
 - name: Kubernetes
   icon_url: icons/k8s.png
+  icon_size: 24px
   url: task
   sub_items:
     - name: Deployments
       icon_url: icons/k8s.png
-      url: "task"
+      icon_size: 20px
+      url: task
     - name: Services
-      icon_class: bi bi-gear-fill
-      url: "task"
+      icon_url: icons/k8s.png
+      icon_size: 20px
+      url: task
     - name: Namespaces
-      icon_class: bi bi-list-ul
+      icon_url: icons/k8s.png
+      icon_size: 20px
       url: task
 
 - name: Docker
   icon_url: icons/docker.png
-  url: "task"
+  icon_size: 24px
+  url: task
   sub_items:
     - name: Login
-      icon_class: null
+      icon_url: icons/docker.png
+      icon_size: 20px
       url: task
     - name: Register
-      icon_class: null
+      icon_url: icons/docker.png
+      icon_size: 20px
       url: task
 
 - name: Networking
-  icon_class: lni lni-layout
-  url: "task"
+  icon_url: icons/network.png
+  icon_size: 24px
+  url: task
   sub_items:
     - name: Domain
+      icon_url: icons/domain.png
+      icon_size: 20px
       sub_items:
         - name: DNS
+          icon_url: icons/domain.png
+          icon_size: 18px
           url: task
         - name: IPs
+          icon_url: icons/domain.png
+          icon_size: 18px
           url: task
 
-- name: Monitorning
-  icon_class: lni lni-popup
+- name: Monitoring
+  icon_url: icons/brainset.png
+  icon_size: 24px
   url: task
   sub_items:
     - name: Logs
-      icon_class: lni lni-cog
+      icon_url: icons/brainset.png
+      icon_size: 20px
       url: task
     - name: Metrics
-      icon_class: lni lni-cog
+      icon_url: icons/brainset.png
+      icon_size: 20px
       url: task
 
 - name: Bills
-  icon_class: lni lni-cog
+  icon_url: icons/settings.png
+  icon_size: 24px
   url: settings
 
 - name: Supports
-  icon_class: lni lni-cog
+  icon_url: icons/settings.png
+  icon_size: 24px
   url: settings
 
 - name: Setting
+  icon_url: icons/settings.png
+  icon_size: 24px
   url: settings

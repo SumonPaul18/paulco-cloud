@@ -92,17 +92,25 @@ body {
 }
 
 .sidebar-nav {
-    padding: 2rem 0;
-    flex: 1 1 auto;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sidebar-item {
+    text-align: center;
+    padding: 16px 0;
+    position: relative;
 }
 
 a.sidebar-link {
-    padding: .625rem 1.625rem;
-    color: #FFF;
-    display: block;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    border-left: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.2s;
+    padding: 8px 0;
 }
 
 .sidebar-link i,
@@ -112,47 +120,61 @@ a.sidebar-link {
 }
 
 a.sidebar-link:hover {
-    background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid #3b7ddd;
+    background: #495057;
+    border-radius: 8px;
 }
 
-.sidebar-item {
-    position: relative;
-}
-
-#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
-    position: absolute;
-    top: 0;
-    left: 70px;
-    background-color: #0e2238;
-    padding: 0;
-    min-width: 15rem;
-    display: none;
-}
-
-#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+.sidebar-icon {
     display: block;
-    max-height: 15em;
-    width: 100%;
-    opacity: 1;
+    margin: 0 auto;
 }
 
-#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
-    border: solid;
-    border-width: 0 .075rem .075rem 0;
-    content: "";
-    display: inline-block;
-    padding: 2px;
-    position: absolute;
-    right: 1.5rem;
-    top: 1.4rem;
-    transform: rotate(-135deg);
-    transition: all .2s ease-out;
+.sidebar-text {
+    font-size: 1rem;
+    margin-left: 8px;
 }
 
-#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
-    transform: rotate(45deg);
-    transition: all .2s ease-out;
+.sidebar-subnav {
+    list-style: none;
+    padding-left: 32px;
+    margin: 8px 0 0 0;
+    background: #182c47;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.sidebar-subitem {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-subitem .sidebar-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #cfd8dc;
+  font-size: 0.95rem;
+  padding: 8px 0 8px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-subitem .sidebar-link:hover {
+  background: #223a5f;
+  color: #fff;
+}
+
+.sidebar-subitem .sidebar-icon {
+  margin-right: 10px;
+  margin-left: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.sidebar-divider {
+    border: none;
+    border-top: 1px solid #495057;
+    margin: 12px 0 0 0;
 }
 
 .navbar {
@@ -191,13 +213,6 @@ a.sidebar-link:hover {
     border-radius: 15px; 
 } 
 */
-
-.sidebar-icon {
-    width: 30px; /* Adjust to your desired icon size */
-    height: 25px; /* Adjust to your desired icon size */
-    vertical-align: middle; /* Align icons with text */
-    margin-right: 5px; /* Space between icon and text */
-}
 
 /* instance_detail.html পেজের জন্য স্টাইল */
 .instance-detail {
@@ -271,4 +286,24 @@ a.sidebar-link:hover {
 
 .button-group .btn {
     margin: 0 10px; /* বাটনগুলোর মধ্যে মার্জিন */
+}
+
+.sidebar-parent {
+  cursor: pointer;
+}
+
+.sidebar-arrow {
+  font-size: 1rem;
+  transition: transform 0.2s;
+}
+
+.sidebar-parent[aria-expanded="true"] .sidebar-arrow {
+  transform: rotate(180deg);
+}
+
+.sidebar-subnav.collapse {
+  transition: height 0.3s;
+  background: #132a47;
+  border-radius: 8px;
+  margin-top: 4px;
 }

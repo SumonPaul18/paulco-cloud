@@ -1,6 +1,7 @@
 import sys
 import os
 import re
+import yaml
 from flask import Flask, redirect, url_for, flash, render_template, request, session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm.exc import NoResultFound
@@ -317,3 +318,11 @@ def index():
 @app.route("/cloud_services")
 def cloud_services():
     return render_template("cloud_services.html")
+
+def load_sidebar_config():
+    with open('sidebar.yaml', 'r') as f:
+        return yaml.safe_load(f)
+
+@app.context_processor
+def inject_sidebar_items():
+    return dict(sidebar_items=load_sidebar_config())

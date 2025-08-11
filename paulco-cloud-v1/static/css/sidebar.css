@@ -48,6 +48,21 @@
 }
 
 .sidebar-icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.sidebar-subitem {
+  display: flex;
+  align-items: center;
+  padding-left: 32px;
 }
